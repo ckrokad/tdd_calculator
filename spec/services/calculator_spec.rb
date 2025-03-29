@@ -18,5 +18,12 @@ RSpec.describe Calculator do
         expect(result).to eq(2)
       end
     end
+
+    context 'when input string contain multiple value' do
+      it 'return origina value' do
+        result = described_class.new.add("1,5")
+        expect(result).to eq(6)
+      end
+    end
   end
 end

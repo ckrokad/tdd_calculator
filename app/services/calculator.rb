@@ -6,7 +6,15 @@ class Calculator
       return 0
     end
 
-    input_str.to_i
+    values = parse_string(input_str)
+    result = 0
+    values.each do |v|
+      result += v.to_i
+    end
+    result
   end
 
+  def parse_string(s)
+    s.split(',')
+  end
 end
