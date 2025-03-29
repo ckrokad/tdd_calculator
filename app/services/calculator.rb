@@ -21,16 +21,49 @@ class Calculator
   def parse_string(s)
     final_arr = []
 
-    delimiter = ","
-    if s[0...2] == "//"
-      delimiter = s[2]
-      s = s[3...]
+    delimiters, s = parse_delimiter(s)
+    final_arr = [s]
+    delimiters.each do |delimiter|
+      temp = []
+      final_arr.each do |w|
+        temp += w.split(delimiter)
+      end
+      final_arr = temp
     end
 
-    input_values = s.split(delimiter)
-    input_values.each do |w|
-      final_arr += w.split("\n")
+    data = []
+    final_arr.each do |w|
+      data += w.split("\n")
     end
-    final_arr
+
+    data
+  end
+
+  def parse_delimiter(s)
+    delimiters = [',']
+    if s[0...2] == "//"
+      if s[2] == '['
+        i = 2
+        delimiter_end_idx = 3
+        temp_delimiter = ""
+        while i < s.length
+          if s[i] == '['
+            temp_delimiter = ""
+          elsif s[i] == ']'
+            delimiters.append(temp_delimiter)
+            delimiter_end_idx = i+1
+          else
+            temp_delimiter += s[i]
+          end
+          i += 1
+        end
+        s = s[delimiter_end_idx...]
+      else
+        delimiters.append(s[2])
+        s = s[3...]
+      end
+    end
+
+    [delimiters, s]
   end
 end
