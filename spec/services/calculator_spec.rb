@@ -39,9 +39,21 @@ RSpec.describe Calculator do
     end
 
     context 'when input string contain different delimiters' do
-      it 'return correct sum' do
+      it 'return 6 sum' do
         result = described_class.new.add("//;1\n2;3")
         expect(result).to eq(6)
+      end
+
+      it 'return 10 sum' do
+        result = described_class.new.add("//;5;2;\n3")
+        expect(result).to eq(10)
+      end
+    end
+
+    context 'when input string contain negative values' do
+      it 'return error' do
+        result = described_class.new.add("1\n2,-3")
+        expect(result).to eq("negative numbers not allowed -3")
       end
     end
   end
