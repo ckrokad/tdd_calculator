@@ -55,6 +55,11 @@ RSpec.describe Calculator do
         result = described_class.new.add("1\n2,-3")
         expect(result).to eq("negative numbers not allowed -3")
       end
+
+      it 'return error with first negative number' do
+        result = described_class.new.add("1\n2,-5,-4")
+        expect(result).to eq("negative numbers not allowed -5")
+      end
     end
   end
 end
