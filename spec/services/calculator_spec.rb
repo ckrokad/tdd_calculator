@@ -75,5 +75,12 @@ RSpec.describe Calculator do
         expect(result).to eq(6)
       end
     end
+
+    context 'when input string contain any length of delimiter' do
+      it 'return sum with ignored bigger numbers' do
+        result = described_class.new.add("//[*][%]\n1*2%3")
+        expect(result).to eq(6)
+      end
+    end
   end
 end
