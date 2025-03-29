@@ -61,5 +61,12 @@ RSpec.describe Calculator do
         expect(result).to eq("negative numbers not allowed -5")
       end
     end
+
+    context 'when input string contain number bigger than 1000' do
+      it 'return sum with ignored bigger numbers' do
+        result = described_class.new.add("1\n2,3000")
+        expect(result).to eq(3)
+      end
+    end
   end
 end

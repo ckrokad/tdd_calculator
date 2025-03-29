@@ -9,10 +9,11 @@ class Calculator
     values = parse_string(input_str)
     result = 0
     values.each do |v|
-      if v.to_i < 0
-        return "negative numbers not allowed #{v.to_i}"
+      v = v.to_i
+      if v < 0
+        return "negative numbers not allowed #{v}"
       end
-      result += v.to_i
+      result += v unless v >= 1001
     end
     result
   end
