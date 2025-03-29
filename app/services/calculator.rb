@@ -16,7 +16,14 @@ class Calculator
 
   def parse_string(s)
     final_arr = []
-    input_values = s.split(',')
+
+    delimiter = ","
+    if s[0...2] == "//"
+      delimiter = s[2]
+      s = s[3...]
+    end
+
+    input_values = s.split(delimiter)
     input_values.each do |w|
       final_arr += w.split("\n")
     end
