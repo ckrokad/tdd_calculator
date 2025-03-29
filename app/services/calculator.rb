@@ -15,6 +15,11 @@ class Calculator
   end
 
   def parse_string(s)
-    s.split(',')
+    final_arr = []
+    input_values = s.split(',')
+    input_values.each do |w|
+      final_arr += w.split("\n")
+    end
+    final_arr
   end
 end
