@@ -13,16 +13,21 @@ RSpec.describe Calculator do
     end
 
     context 'when input string contain single value' do
-      it 'return origina value' do
+      it 'return original value' do
         result = described_class.new.add("2")
         expect(result).to eq(2)
       end
     end
 
     context 'when input string contain multiple value' do
-      it 'return origina value' do
+      it 'return sum of 2 values' do
         result = described_class.new.add("1,5")
         expect(result).to eq(6)
+      end
+
+      it 'return sum of multiple values' do
+        result = described_class.new.add("1,5,7")
+        expect(result).to eq(13)
       end
     end
   end
