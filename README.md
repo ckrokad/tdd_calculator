@@ -21,4 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+
+Go to repository dir
+Run rspec in terminal
+
