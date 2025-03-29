@@ -30,5 +30,12 @@ RSpec.describe Calculator do
         expect(result).to eq(13)
       end
     end
+
+    context 'when input string contain new line char' do
+      it 'return correct sum' do
+        result = described_class.new.add("1\n2,3")
+        expect(result).to eq(6)
+      end
+    end
   end
 end
