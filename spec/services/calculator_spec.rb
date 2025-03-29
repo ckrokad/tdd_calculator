@@ -11,5 +11,12 @@ RSpec.describe Calculator do
         expect(result).to eq(0)
       end
     end
+
+    context 'when input string contain single value' do
+      it 'return origina value' do
+        result = described_class.new.add("2")
+        expect(result).to eq(2)
+      end
+    end
   end
 end
